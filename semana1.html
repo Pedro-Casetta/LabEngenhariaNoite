@@ -18,19 +18,55 @@
             document.write("<h" + i + ">Olá sala!</h" + i + ">");
         }
 
-        let dado = prompt("Informe um dado:","");
-        if(confirm("Quer verificar o tipo de dado?")){
-            if(!isNaN(dado))
-                dado = Number.parseInt(dado);
-            document.writeln("Exercício 1: O tipo de dado é " + typeof(dado));
+        let dado = prompt("Exercício 1 - Informe um dado:","");
+        if(confirm("Exercício 1 - Quer verificar o tipo de dado?")){
+            if(!isNaN(dado) && dado != "")
+                document.write("Exercício 1 - O tipo de '" + dado + "' é number");
+            else if (dado === "")
+                document.write("Exercício 1 - O tipo de '" + dado + "' é undefined");
+            else if (dado == "true" || dado == "false")
+                document.write("Exercício 1 - O tipo de '" + dado + "' é boolean");
+            else
+                document.write("Exercício 1 - O tipo de '" + dado + "' é string");
         }
         else
-            document.writeln("Exercício 1: Obrigado por visitar esta página.");
+            document.write("Exercício 1 - Obrigado por visitar esta página.");
 
-        let int_positivo = prompt("Digite um número inteiro positivo:");
-        if(isNaN(int_positivo) || int_positivo < 0)
-            document.write("Exercício 2: Entrada inválida!");
+        let int_positivo = prompt("Exercício 2 - Digite um número inteiro positivo:");
+        document.write("<br><br>");
+        if(isNaN(int_positivo) || int_positivo < 0 || int_positivo == "")
+            alert("Exercício 2 - Entrada inválida!");
+        else{
+            let is_primo = true;
+            for(i = 2; i <= int_positivo / 2; i++){
+                if (int_positivo % i == 0)
+                    is_primo = false;
+            }
+            if (is_primo)
+                alert("Exercício 2 - O valor " + int_positivo + " é primo!");
+            else
+                alert("Exercício 2 - O valor " + int_positivo + " não é primo!");
+        }
 
+        let int_positivo1 = prompt("Exercício 3 - Digite um número inteiro positivo:");
+        if (isNaN(int_positivo1) || int_positivo1 < 0 || int_positivo1 == "")
+            alert("Exercício 3 - Entrada inválida!");
+        else{
+            if(int_positivo1 % 2 == 0)
+                alert("Exercício 3 - O número " + int_positivo1 + " é par!");
+            else
+                alert("Exercício 3 - O número " + int_positivo1 + " é ímpar!");
+        }
+
+        let int_positivo2 = prompt("Exercício 4 - Informe um número inteiro positivo");
+        if (isNaN(int_positivo2) || int_positivo2 < 0 || int_positivo2 == "")
+            alert("Exercício 4 - Entrada inválida!");
+        else{
+            fatorial = int_positivo2;
+            for(i = int_positivo2 - 1; i > 0; i = i - 1)
+                fatorial = fatorial * i;
+            alert("Exercício 4 - O fatorial de " + int_positivo2 + " é igual a " + fatorial);
+        }
 
     </script><br><br>
     <a href="index.html">Voltar</a>
