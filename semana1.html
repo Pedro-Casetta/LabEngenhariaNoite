@@ -14,9 +14,24 @@
             alert("Seu nome é: " + nome);
         }
 
-    for(i=1; i<=6; i++){
-        document.write("<h" + i + ">Olá sala!</h" + i + ">");
-    }
+        for(i=1; i<=6; i++){
+            document.write("<h" + i + ">Olá sala!</h" + i + ">");
+        }
+
+        let dado = prompt("Informe um dado:","");
+        if(confirm("Quer verificar o tipo de dado?")){
+            if(!isNaN(dado))
+                dado = Number.parseInt(dado);
+            document.writeln("Exercício 1: O tipo de dado é " + typeof(dado));
+        }
+        else
+            document.writeln("Exercício 1: Obrigado por visitar esta página.");
+
+        let int_positivo = prompt("Digite um número inteiro positivo:");
+        if(isNaN(int_positivo) || int_positivo < 0)
+            document.write("Exercício 2: Entrada inválida!");
+
+
     </script><br><br>
     <a href="index.html">Voltar</a>
 </body>
