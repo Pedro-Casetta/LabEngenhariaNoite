@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 2</title>
+    <script type="text/javascript">
+        var lista = new Array();
+        function Inserir() {
+            var entrada = document.querySelectorAll('[id^=entrada]').value;
+            lista.push(entrada);
+        }
+    </script>
 </head>
 <body>
     <h1>Atividade da Semana 2</h1>
+
+    
+    <input id="entrada" type="text" value="">
+    <button id="botao" onclick="Inserir()">Inserir</button>
+    <br>
+    <ol>
+    <script type="text/javascript">
+            for (i=0; i<array.length; i++) {
+                document.write("<li>" + array[i] + "</li>");
+            }
+    </script>    
+    </ol>
+    
+    
+    <br>
     <a href="index.html">Voltar</a>
 </body>
 </html>
