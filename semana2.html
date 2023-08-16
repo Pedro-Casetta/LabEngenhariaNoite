@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 2</title>
     <script type="text/javascript">
-        var lista = new Array();
+        let array = new Array();
         function Inserir() {
-            var entrada = document.querySelectorAll('[id^=entrada]').value;
-            lista.push(entrada);
+            let entrada = document.getElementById('entrada').value;
+            array.push(entrada);
+            document.getElementById('entrada').value = "";
+            Ordenar();
         }
+
+        function Ordenar() {
+            document.getElementById('lista').innerHTML = "";
+            array.sort();
+            for (i=0; i<array.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = array[i];
+                document.getElementById('lista').appendChild(li);
+            }
+        }
+
     </script>
 </head>
 <body>
     <h1>Atividade da Semana 2</h1>
 
     
-    <input id="entrada" type="text" value="">
-    <button id="botao" onclick="Inserir()">Inserir</button>
+    <input id="entrada" type="text" style="width: 150px; height: 25px;">
+    <button onclick="Inserir()" style="margin-left: 10px; height: 30px;">Inserir</button>
     <br>
-    <ol>
-    <script type="text/javascript">
-            for (i=0; i<array.length; i++) {
-                document.write("<li>" + array[i] + "</li>");
-            }
-    </script>    
+    <ol id="lista">
     </ol>
     
     
