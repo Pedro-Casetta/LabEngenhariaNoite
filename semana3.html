@@ -7,6 +7,49 @@
 </head>
 <body>
     <h1>Atividade da Semana 3</h1>
+
+    <p>Exercício 1: </p>
+    <script>
+        array_dia_ptbr = new Array("Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado");
+        let objeto_data = new Date();
+        let numero_dia_atual = objeto_data.getDay();
+        let dia_atual_extenso = array_dia_ptbr[numero_dia_atual];
+
+        let array_mes_ptbr = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+        let numero_mes_atual = objeto_data.getMonth();
+        let mes_atual_extenso = array_mes_ptbr[numero_mes_atual];
+
+        let data_ajustada = objeto_data.getYear() + 1900;
+
+        document.write(dia_atual_extenso + ", " + objeto_data.getDate() + " de " + mes_atual_extenso + " de " + data_ajustada);
+    </script>
+
+    <p>Exercício 2: </p>
+    <script>
+        function ativarContaHora() {
+            const meu_time_out = setTimeout(contaHora, 1000);
+        }
+
+        function contaHora(){
+            let objeto_data_tempo_real = new Date();
+            let hora_atual = objeto_data_tempo_real.getHours();
+            let minuto_atual = objeto_data_tempo_real.getMinutes();
+            let segundo_atual = objeto_data_tempo_real.getSeconds();
+            let tempo_atual = hora_atual + ":" + minuto_atual + ":" + segundo_atual;
+            document.getElementById("hora").innerHTML = tempo_atual;
+        }
+
+        setInterval(ativarContaHora, 0);
+    </script>
+    <p id="hora">
+        <script>document.write(objeto_data.getHours() + ":" + objeto_data.getMinutes() + ":" + objeto_data.getSeconds());
+        </script>
+    </p>
+
+    <p>Exercício 3: </p>
+
+    <br>
+    <br>
     <a href="index.html">Voltar</a>
 </body>
 </html>
