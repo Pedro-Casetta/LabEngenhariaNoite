@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 3</title>
+    <link rel="stylesheet" href="design.css">
 </head>
 <body>
     <h1>Atividade da Semana 3</h1>
@@ -42,11 +43,27 @@
         setInterval(ativarContaHora, 0);
     </script>
     <p id="hora">
-        <script>document.write(objeto_data.getHours() + ":" + objeto_data.getMinutes() + ":" + objeto_data.getSeconds());
+        <script>
+            document.write(objeto_data.getHours() + ":" + objeto_data.getMinutes() + ":" + objeto_data.getSeconds());
         </script>
     </p>
 
     <p>Exercício 3: </p>
+    <script>
+        function ePalindroma() {
+            let texto = document.getElementById("atividade_entrada").value;
+            let texto_inverso = "";
+            for (let i = texto.length - 1; i >= 0; i--) {
+                texto_inverso += texto[i];
+            }
+            if (texto_inverso.toLowerCase() == texto.toLowerCase())
+                alert("O texto inserido é palíndromo!");
+            else
+                alert("O texto inserido não é palíndromo!");
+        }
+    </script>
+    <input id="atividade_entrada" type="text">
+    <button id="atividade_botao" onclick="ePalindroma()">Verificar</button>
 
     <br>
     <br>
