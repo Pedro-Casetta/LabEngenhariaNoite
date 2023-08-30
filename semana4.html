@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 4</title>
+
+    <script>
+
+        window.addEventListener('load', PrepararScript);
+
+        function PrepararScript() {
+
+            function alterarCampoEntrada() {
+                document.getElementById('curso').type = 'hidden';
+            }
+            
+            document.getElementById('radio_pessoa_professor').addEventListener('change', alterarCampoEntrada);
+        }
+        
+    </script>
+
 </head>
 <body>
     <h1>Atividade da Semana 4</h1>
+    
+    <input id="nome" type="text" placeholder="Digite seu nome completo">
+    <input id="email" type="email" placeholder="pessoa@email.com">
+    <input id="data_nascimento" type="date">
+    <input id="telefone_fixo" type="text" placeholder="(99) 9999-9999">
+    <input id="telefone_celular" type="text" placeholder="(99) 99999-9999">
+    
+    <input id="radio_pessoa_professor" type="radio" name="pessoa" value="professor">
+    <label for="radio_pessoa_professor">Professor</label>
+    
+    <input id="radio_pessoa_aluno" type="radio" name="pessoa" value="aluno">
+    <label for="radio_pessoa_aluno">Aluno</label>
+
+    <input id="area_atuacao" type="text" placeholder="Digite sua área de atuação">
+    <input id="matricula" type="text" placeholder="Digite sua matrícula">
+    <input id="lattes" type="text" placeholder="Digite aqui o endereço para seu Lattes">
+
+    <input id="curso" type="text" placeholder="Digite seu curso">
+
+
+    <input id="enviar" type="button" onclick="" value="Enviar">
+    <input id="redefinir" type="button" onclick="" value="Redefinir"> 
+
+
+
     <a href="index.html">Voltar</a>
 </body>
 </html>
