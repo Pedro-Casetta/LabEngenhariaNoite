@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 4</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
     <script>
 
         window.addEventListener('load', PrepararScript);
 
         function PrepararScript() {
 
-            function alterarCampoEntrada() {
+            function alterarCampoProfessor() {
+                document.getElementById('label_curso').innerHTML = '';
                 document.getElementById('curso').type = 'hidden';
+                document.getElementById('label_atuacao').innerHTML = 'Área:';
+                document.getElementById('area_atuacao').type = 'text';
+                document.getElementById('label_lattes').innerHTML = 'Lattes:';
+                document.getElementById('lattes').type = 'text';
+            }
+
+            function alterarCampoAluno() {
+                document.getElementById('label_curso').innerHTML = 'Curso:';
+                document.getElementById('curso').type = 'text';
+                document.getElementById('label_atuacao').innerHTML = '';
+                document.getElementById('area_atuacao').type = 'hidden';
+                document.getElementById('label_lattes').innerHTML = '';
+                document.getElementById('lattes').type = 'hidden';
             }
             
-            document.getElementById('radio_pessoa_professor').addEventListener('change', alterarCampoEntrada);
+            document.getElementById('radio_pessoa_professor').addEventListener('change', alterarCampoProfessor);
+            document.getElementById('radio_pessoa_aluno').addEventListener('change', alterarCampoAluno);
         }
         
     </script>
@@ -24,28 +42,68 @@
 <body>
     <h1>Atividade da Semana 4</h1>
     
-    <input id="nome" type="text" placeholder="Digite seu nome completo">
-    <input id="email" type="email" placeholder="pessoa@email.com">
-    <input id="data_nascimento" type="date">
-    <input id="telefone_fixo" type="text" placeholder="(99) 9999-9999">
-    <input id="telefone_celular" type="text" placeholder="(99) 99999-9999">
-    
-    <input id="radio_pessoa_professor" type="radio" name="pessoa" value="professor">
-    <label for="radio_pessoa_professor">Professor</label>
-    
-    <input id="radio_pessoa_aluno" type="radio" name="pessoa" value="aluno">
-    <label for="radio_pessoa_aluno">Aluno</label>
+    <div class="container border border-secondary">
+        <h2 class="mx-5">Formulário de Cadastro:</h2>
+        <form method="POST" class="mx-5">
+            <div class="row m-4">
+                <label for="nome" class="p-0">Nome:</label><br>
+                <input id="nome" type="text" placeholder="Digite seu nome completo" class="p-1">
+            </div>
+            <div class="row m-4">
+                <div class="col-7 p-0">
+                    <label for="email">Email:</label><br>
+                    <input id="email" type="email" placeholder="pessoa@email.com" class="p-1 w-100">
+                </div>
+                <div class="col-5">
+                    <label for="data_nascimento" class="ms-5">Data de nascimento:</label><br>
+                    <input id="data_nascimento" type="date" class="p-1 w-50 ms-5">
+                </div>
+            </div>
+        
+            <div class="row m-4">
+                <div class="col-4 ps-0">
+                    <label for="telefone_fixo">Telefone fixo:</label><br>
+                    <input id="telefone_fixo" type="text" placeholder="(99)9999-9999" class="p-1 w-75">
+                </div>
+                <div class="col-4">
+                    <label for="telefone_celular">Telefone celular:</label><br>
+                    <input id="telefone_celular" type="text" placeholder="(99)99999-9999" class="p-1 w-75">
+                </div>
+                <div class="col-4 mt-2">
+                        <input id="radio_pessoa_professor" type="radio" name="pessoa" value="professor" class="form-check-input p-2">
+                        <label for="radio_pessoa_professor" class="form-check-label h5">Professor</label>
+                        <br>
+                        <input id="radio_pessoa_aluno" type="radio" name="pessoa" value="aluno" class="form-check-input p-2">
+                        <label for="radio_pessoa_aluno" class="form-check-label h5">Aluno</label>
+                </div>
+            </div>
+            <div class="row m-4">
+                <div class="col-8">
+                    <div class="row">
+                        <label for="area_atuacao" id="label_atuacao" class="ps-0">Área:</label>
+                        <input id="area_atuacao" type="text" placeholder="Digite sua área de atuação" class="w-75 p-1">
+                    </div>
+                    <div class="row">
+                        <label for="curso" id="label_curso" class="ps-0">Curso:</label>
+                        <input id="curso" type="text" placeholder="Digite seu curso" class="w-75 p-1">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="matricula">Matrícula:</label><br>
+                    <input id="matricula" type="text" placeholder="Digite sua matrícula" class="w-100 p-1">
+                </div>
+            </div>
+            <div class="row m-4">
+                <label for="lattes" id="label_lattes" class="ps-0">Lattes:</label>
+                <input id="lattes" type="text" placeholder="Digite aqui o endereço para seu Lattes" class="w-50 p-1">
+            </div>
 
-    <input id="area_atuacao" type="text" placeholder="Digite sua área de atuação">
-    <input id="matricula" type="text" placeholder="Digite sua matrícula">
-    <input id="lattes" type="text" placeholder="Digite aqui o endereço para seu Lattes">
-
-    <input id="curso" type="text" placeholder="Digite seu curso">
-
-
-    <input id="enviar" type="button" onclick="" value="Enviar">
-    <input id="redefinir" type="button" onclick="" value="Redefinir"> 
-
+            <div class="row m-5">
+                <input id="enviar" type="submit" value="Enviar" class="w-25 mx-auto">
+                <input id="redefinir" type="reset" value="Redefinir" class="w-25 mx-auto"> 
+            </div>
+        </form>
+    </div>
 
 
     <a href="index.html">Voltar</a>
