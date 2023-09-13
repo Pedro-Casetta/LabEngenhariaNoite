@@ -4,87 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 5</title>
-    <link rel="stylesheet" href="design.css">
+    <link_reset rel="stylesheet" href="design.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link_reset href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <script>
-        window.addEventListener('load', CarregarValores);
-
+        window.addEventListener('load', CriarDivs);
+        
         var qtd_homens = 0;
         var qtd_mulheres = 0;
         var total = qtd_homens + qtd_mulheres;
         
+        function CriarDivs() {
+            var div = document.createElement('div');
 
+            div.setAttribute('id', 'caixa');
+            div.setAttribute('class', 'w-50 h-50 border border-black border-3 mx-auto mt-5 p-3');
+            document.getElementById('principal').appendChild(div);
 
-            function CarregarValores() {
-                document.getElementById('total').innerHTML = total;
-                document.getElementById('qtd_homens').innerHTML = qtd_homens;
-                document.getElementById('qtd_mulheres').innerHTML = qtd_mulheres;
+            div.setAttribute('id', 'linha1');
+            div.setAttribute('class', 'row ps-1');
+            document.getElementById('caixa').appendChild(div);
 
-            }
+            div.setAttribute('id', 'div_total');
+            div.setAttribute('class', 'col-10 text-center');
+            document.getElementById('linha1').appendChild(div);
+            var h2 = document.createElement('h2');
+            h2.setAttribute('class', 'ms-5 ps-5');
+            var texto = document.createTextNode('Total');
+            h2.appendChild(texto);
+            document.getElementById('div_total').appendChild(h2);
 
-            function MaisHomem() {
-                qtd_homens = qtd_homens + 1;
+            div.setAttribute('id', 'div_reset');
+            div.setAttribute('class', 'col-2');
+            document.getElementById('linha1').appendChild(div);
+            var a = document.createElement('a');
+            a.setAttribute('id', 'link_reset');
+            a.setAttribute('href', '#');
+            a.setAttribute('onclick', 'Zerar()');
+            var img = document.createElement('img');
+            img.setAttribute('src', 'imagens/arrow-clockwise.svg');
+            img.setAttribute('class', 'img-fluid');
+            img.setAttribute('width', '50');
+            document.getElementById('div_reset').appendChild(a);
+            document.getElementById('link_reset').appendChild(img);
+
+            div.setAttribute('id', 'linha2');
+            div.setAttribute('class', 'row');
+            document.getElementById('caixa').appendChild(div);            
+            div.setAttribute('id', 'total');
+            div.setAttribute('class', 'border border-black border-2 rounded w-25 mx-auto text-center h4');
+            document.getElementById('linha2').appendChild(div);
+
+            div.setAttribute('id', 'linha3');
+            div.setAttribute('class', 'row pt-5 text-center');
+            document.getElementById('caixa').appendChild(div);
+            div.setAttribute('id', 'div_icone_masculino');
+            div.setAttribute('class', 'col-6');
+            document.getElementById('linha3').appendChild(div);
+            img.setAttribute('src', 'imagens/icone_masculino.webp');
+            img.setAttribute('class', 'mx-auto img-fluid w-75');
+            img.setAttribute('width', '');
+            document.getElementById('div_icone_masculino').appendChild(img);
+            div.setAttribute('id', 'div_icone_feminino');
+            div.setAttribute('class', 'col-6');
+            document.getElementById('linha3').appendChild(div);
+            img.setAttribute('src', 'imagens/icone_feminino.webp');
+            document.getElementById('div_icone_feminino').appendChild(img);
+
+            div.setAttribute('id', 'linha4');
+            div.setAttribute('class', 'row mt-3');
+            document.getElementById('caixa').appendChild(div);
+
+            div.setAttribute('id', 'div_botoes_masculino');
+            div.setAttribute('class', 'col-6 text-center');
+            document.getElementById('linha4').appendChild(div);
+            a.setAttribute('id', 'link_mais_homem');
+            a.setAttribute('href', '#');
+            a.setAttribute('onclick', 'MaisHomem()');
+            document.getElementById('div_botoes_masculino').appendChild(a);
+            img.setAttribute('id', 'botao_mais_homem');
+            img.setAttribute('src', 'imagens/plus-circle.svg');
+            img.setAttribute('width', '60');
+            img.setAttribute('class', '');
+            document.getElementById('link_mais_homem').appendChild(img);
+            a.setAttribute('id', 'link_menos_homem');
+            a.setAttribute('onclick','MenosHomem()');
+            a.setAttribute('class', 'ms-4');
+            document.getElementById('div_botoes_masculino').appendChild(a);
+            img.setAttribute('id', 'botao_menos_homem');
+            img.setAttribute('src', 'imagens/dash-circle.svg');
+            img.setAttribute('width', '40');
+            document.getElementById('link_menos_homem').appendChild(a);
+
+            div.setAttribute('id', 'div_botoes_feminino');
+            document.getElementById('linha4').appendChild(div);
+            a.setAttribute('id', 'link_mais_mulher');
+            a.setAttribute('href', '#');
+            a.setAttribute('onclick', 'MaisMulher()');
+            document.getElementById('div_botoes_feminino').appendChild(a);
+            img.setAttribute('id', 'botao_mais_mulher');
+            img.setAttribute('src', 'imagens/plus-circle.svg');
+            img.setAttribute('width', '60');
+            img.setAttribute('class', '');
+            document.getElementById('link_mais_mulher').appendChild(img);
+            a.setAttribute('id', 'link_menos_mulher');
+            a.setAttribute('onclick','MenosMulher()');
+            a.setAttribute('class', 'ms-4');
+            document.getElementById('div_botoes_feminino').appendChild(a);
+            img.setAttribute('id', 'botao_menos_mulher');
+            img.setAttribute('src', 'imagens/dash-circle.svg');
+            img.setAttribute('width', '40');
+            document.getElementById('link_menos_mulher').appendChild(a);
+            
+            
+            
+            
+            
+            
+            CarregarValores();
+        }
+
+        
+        function CarregarValores() {
+            document.getElementById('total').innerHTML = total;
+            document.getElementById('qtd_homens').innerHTML = qtd_homens;
+            document.getElementById('qtd_mulheres').innerHTML = qtd_mulheres;
+        }
+
+        function MaisHomem() {
+            qtd_homens = qtd_homens + 1;
+            total = qtd_homens + qtd_mulheres;
+            CarregarValores();
+        }
+
+        function MenosHomem() {
+            if (qtd_homens > 0) {
+                qtd_homens = qtd_homens - 1;
                 total = qtd_homens + qtd_mulheres;
                 CarregarValores();
             }
-
-            function MenosHomem() {
-                if (qtd_homens > 0) {
-                    qtd_homens = qtd_homens - 1;
-                    total = qtd_homens + qtd_mulheres;
-                    CarregarValores();
-                }
-            }
-
-            function MaisMulher() {
-                qtd_mulheres = qtd_mulheres + 1;
+        }
+        
+        function MaisMulher() {
+            qtd_mulheres = qtd_mulheres + 1;
+            total = qtd_homens + qtd_mulheres;
+            CarregarValores();
+        }
+        
+        function MenosMulher() {
+            if (qtd_mulheres > 0) {
+                qtd_mulheres = qtd_mulheres - 1;
                 total = qtd_homens + qtd_mulheres;
                 CarregarValores();
             }
+        }
 
-            function MenosMulher() {
-                if (qtd_mulheres > 0) {
-                    qtd_mulheres = qtd_mulheres - 1;
-                    total = qtd_homens + qtd_mulheres;
-                    CarregarValores();
-                }
-            }
-
-            function Zerar() {
-                total = 0;
-                qtd_homens = 0;
-                qtd_mulheres = 0;
-                CarregarValores();
-            }
+        function Zerar() {
+            total = 0;
+            qtd_homens = 0;
+            qtd_mulheres = 0;
+            CarregarValores();
+        }
 
         </script>
 
 </head>
 <body>
-    <div class="container">
+    <div id="principal" class="container">
         <div id="caixa" class="w-50 h-50 border border-black border-3 mx-auto mt-5 p-3">
-            <div id="linha1" class="row ps-1">
-                <div class="col-10 text-center">
-                    <h2 class="ms-5 ps-5">Total</h2>
-                </div>
-                <div class="col-2">
-                    <a href="#" onclick="Zerar()"><img id="zerar" src="imagens/arrow-clockwise.svg" class="img-fluid" width="50"></a>
-                </div>
-            </div>
-            <div id="linha2" class="row">
-                <div id="total" class="border border-black border-2 rounded w-25 mx-auto text-center h4"></div>
-            </div>
-            <div id="linha3" class="row pt-5 text-center">
-                <div class="col-6">
-                    <img src="imagens/icone_masculino.webp" class="mx-auto img-fluid w-75">
-                </div>
-                <div class="col-6">
-                    <img src="imagens/icone_feminino.webp" class="mx-auto img-fluid w-75">
-                </div>
-            </div>
+            
             <div id="linha4" class="row mt-3">
                 <div class="col-6 text-center">
                     <a href="#" onclick="MaisHomem()"><img id="botao_mais_homem" src="imagens/plus-circle.svg" height="60"></a>
