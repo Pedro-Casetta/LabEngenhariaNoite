@@ -12,11 +12,51 @@
     <script>
         window.addEventListener('load', CriarDivs);
 
+
+        function AddDisplay(valor) {
+            document.getElementById('display').value += valor;
+        }
+
+        function LimpaDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function MudaSinal() {
+            var display = document.getElementById('display');
+            if (display.value.startsWith('-')) {
+                display.value = display.value.substring(1);
+            } else {
+                display.value = '-' + display.value;
+            }
+        }
+
+        function Porcentagem() {
+            var display = document.getElementById('display');
+            var valor = parseFloat(display.value);
+
+            if (!isNaN(valor)) {
+                display.value = (valor / 100).toString();
+            }
+        }
+
+        function Calcular() {
+            try {
+                var equacao = document.getElementById('display').value;
+                var resultado = eval(equacao);
+                document.getElementById('display').value = resultado;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+
+
         function CriarDivs() {
 
             var div = document.createElement('div');
             div.setAttribute('id', 'caixa');
-            div.setAttribute('class', 'w-50 h-50 mt-5 bg-dark');
+            div.setAttribute('class', 'mt-2 bg-dark mx-auto p-4');
+            div.setAttribute('style', 'width:670px;');
             document.getElementById('principal').appendChild(div);
 
             var div2 = document.createElement('div');
@@ -26,165 +66,179 @@
             var input = document.createElement('input');
             input.setAttribute('id', 'display');
             input.setAttribute('type', 'text');
-            input.setAttribute('class', 'bg-dark text-white')
+            input.setAttribute('class', 'bg-dark text-white input_calculadora');
+            input.setAttribute('placeholder', '0');
             document.getElementById('linha1').appendChild(input);
 
             var div3 = document.createElement('div');
             div3.setAttribute('id','linha2');
-            div3.setAttribute('class', 'row');
+            div3.setAttribute('class', 'row mx-auto mt-3 py-1');
             document.getElementById('caixa').appendChild(div3);
             var button = document.createElement('button');
             button.setAttribute('id', 'AC');
-            button.setAttribute('onclick', LimpaDisplay);
-            button.setAttribute('class', 'btn btn-secondary w-25');
+            button.setAttribute('onclick', 'LimpaDisplay()');
+            button.setAttribute('class', 'btn btn-light rounded-circle py-4 ms-5 btn-lg');
+            button.setAttribute('style', 'width:100px;');
             document.getElementById('linha2').appendChild(button);
             document.getElementById('AC').innerHTML = "AC";
             var button2 = document.createElement('button');
             button2.setAttribute('id', '+/-');
-            button2.setAttribute('onclick', MudaSinal);
-            button2.setAttribute('class', 'btn btn-secondary w-25');
+            button2.setAttribute('onclick', 'MudaSinal()');
+            button2.setAttribute('class', 'btn btn-light rounded-circle py-4 ms-5 btn-lg');
+            button2.setAttribute('style', 'width:100px;');
             document.getElementById('linha2').appendChild(button2);
             document.getElementById('+/-').innerHTML = "+/-";
             var button3 = document.createElement('button');
             button3.setAttribute('id', '%');
-            button3.setAttribute('onclick', Porcentagem);
-            button3.setAttribute('class', 'btn btn-secondary w-25');
+            button3.setAttribute('onclick', 'Porcentagem()');
+            button3.setAttribute('class', 'btn btn-light rounded-circle py-4 ms-5 btn-lg');
+            button3.setAttribute('style', 'width:100px;');
             document.getElementById('linha2').appendChild(button3);
             document.getElementById('%').innerHTML = "%";
             var button4 = document.createElement('button');
             button4.setAttribute('id', '/');
-            button4.setAttribute('onclick', AddDisplay);
-            button4.setAttribute('class', 'btn btn-warning w-25');
+            button4.setAttribute('onclick', "AddDisplay('/')");
+            button4.setAttribute('class', 'btn btn-warning rounded-circle py-4 ms-5 btn-lg');
+            button4.setAttribute('style', 'width:100px;');
             document.getElementById('linha2').appendChild(button4);
             document.getElementById('/').innerHTML = "/";
 
 
             var div4 = document.createElement('div');
             div4.setAttribute('id','linha3');
-            div4.setAttribute('class', 'row');
+            div4.setAttribute('class', 'row mx-auto mt-3 py-1');
             document.getElementById('caixa').appendChild(div4);
-            var button5 = document.createElement('button');     // alterar daqui pra baixo
+            var button5 = document.createElement('button');
             button5.setAttribute('id', '7');
-            button5.setAttribute('onclick', LimpaDisplay);
-            button5.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button5);
+            button5.setAttribute('onclick', "AddDisplay('7')");
+            button5.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button5.setAttribute('style', 'width:100px;');
+            document.getElementById('linha3').appendChild(button5);
             document.getElementById('7').innerHTML = "7";
             var button6 = document.createElement('button');
             button6.setAttribute('id', '8');
-            button6.setAttribute('onclick', MudaSinal);
-            button6.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button6);
+            button6.setAttribute('onclick', "AddDisplay('8')");
+            button6.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button6.setAttribute('style', 'width:100px;');
+            document.getElementById('linha3').appendChild(button6);
             document.getElementById('8').innerHTML = "8";
             var button7 = document.createElement('button');
             button7.setAttribute('id', '9');
-            button7.setAttribute('onclick', Porcentagem);
-            button7.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button7);
+            button7.setAttribute('onclick', "AddDisplay('9')");
+            button7.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button7.setAttribute('style', 'width:100px;');
+            document.getElementById('linha3').appendChild(button7);
             document.getElementById('9').innerHTML = "9";
             var button8 = document.createElement('button');
             button8.setAttribute('id', 'x');
-            button8.setAttribute('onclick', AddDisplay);
-            button8.setAttribute('class', 'btn btn-warning w-25');
-            document.getElementById('linha2').appendChild(button8);
+            button8.setAttribute('onclick', "AddDisplay('*')");
+            button8.setAttribute('class', 'btn btn-warning rounded-circle py-4 ms-5 btn-lg');
+            button8.setAttribute('style', 'width:100px;');
+            document.getElementById('linha3').appendChild(button8);
             document.getElementById('x').innerHTML = "x";
 
             var div5 = document.createElement('div');
             div5.setAttribute('id','linha4');
-            div5.setAttribute('class', 'row');
+            div5.setAttribute('class', 'row mx-auto mt-3 py-1');
             document.getElementById('caixa').appendChild(div5);
-            var button9 = document.createElement('button');     // alterar daqui pra baixo
+            var button9 = document.createElement('button');
             button9.setAttribute('id', '4');
-            button9.setAttribute('onclick', LimpaDisplay);
-            button9.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button9);
+            button9.setAttribute('onclick', "AddDisplay('4')");
+            button9.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button9.setAttribute('style', 'width:100px;');
+            document.getElementById('linha4').appendChild(button9);
             document.getElementById('4').innerHTML = "4";
             var button10 = document.createElement('button');
             button10.setAttribute('id', '5');
-            button10.setAttribute('onclick', MudaSinal);
-            button10.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button10);
+            button10.setAttribute('onclick', "AddDisplay('5')");
+            button10.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button10.setAttribute('style', 'width:100px;');
+            document.getElementById('linha4').appendChild(button10);
             document.getElementById('5').innerHTML = "5";
             var button11 = document.createElement('button');
             button11.setAttribute('id', '6');
-            button11.setAttribute('onclick', Porcentagem);
-            button11.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button11);
+            button11.setAttribute('onclick', "AddDisplay('6')");
+            button11.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button11.setAttribute('style', 'width:100px;');
+            document.getElementById('linha4').appendChild(button11);
             document.getElementById('6').innerHTML = "6";
             var button12 = document.createElement('button');
             button12.setAttribute('id', '-');
-            button12.setAttribute('onclick', AddDisplay);
-            button12.setAttribute('class', 'btn btn-warning w-25');
-            document.getElementById('linha2').appendChild(button12);
+            button12.setAttribute('onclick', "AddDisplay('-')");
+            button12.setAttribute('class', 'btn btn-warning rounded-circle py-4 ms-5 btn-lg');
+            button12.setAttribute('style', 'width:100px;');
+            document.getElementById('linha4').appendChild(button12);
             document.getElementById('-').innerHTML = "-";
 
             var div6 = document.createElement('div');
             div6.setAttribute('id','linha5');
-            div6.setAttribute('class', 'row');
+            div6.setAttribute('class', 'row mx-auto mt-3 py-1');
             document.getElementById('caixa').appendChild(div6);
-            var button13 = document.createElement('button');     // alterar daqui pra baixo
+            var button13 = document.createElement('button');
             button13.setAttribute('id', '1');
-            button13.setAttribute('onclick', LimpaDisplay);
-            button13.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button13);
+            button13.setAttribute('onclick', "AddDisplay('1')");
+            button13.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button13.setAttribute('style', 'width:100px;');
+            document.getElementById('linha5').appendChild(button13);
             document.getElementById('1').innerHTML = "1";
             var button14 = document.createElement('button');
             button14.setAttribute('id', '2');
-            button14.setAttribute('onclick', MudaSinal);
-            button14.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button14);
+            button14.setAttribute('onclick', "AddDisplay('2')");
+            button14.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button14.setAttribute('style', 'width:100px;');
+            document.getElementById('linha5').appendChild(button14);
             document.getElementById('2').innerHTML = "2";
             var button15 = document.createElement('button');
             button15.setAttribute('id', '3');
-            button15.setAttribute('onclick', Porcentagem);
-            button15.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button15);
+            button15.setAttribute('onclick', "AddDisplay('3')");
+            button15.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button15.setAttribute('style', 'width:100px;');
+            document.getElementById('linha5').appendChild(button15);
             document.getElementById('3').innerHTML = "3";
             var button16 = document.createElement('button');
             button16.setAttribute('id', '+');
-            button16.setAttribute('onclick', AddDisplay);
-            button16.setAttribute('class', 'btn btn-warning w-25');
-            document.getElementById('linha2').appendChild(button16);
+            button16.setAttribute('onclick', "AddDisplay('+')");
+            button16.setAttribute('class', 'btn btn-warning rounded-circle py-4 ms-5 btn-lg');
+            button16.setAttribute('style', 'width:100px;');
+            document.getElementById('linha5').appendChild(button16);
             document.getElementById('+').innerHTML = "+";
 
             var div7 = document.createElement('div');
             div7.setAttribute('id','linha6');
-            div7.setAttribute('class', 'row');
+            div7.setAttribute('class', 'row mx-auto mt-3 py-1');
             document.getElementById('caixa').appendChild(div7);
-            var button17 = document.createElement('button');     // alterar daqui pra baixo
+            var button17 = document.createElement('button');
             button17.setAttribute('id', '0');
-            button17.setAttribute('onclick', LimpaDisplay);
-            button17.setAttribute('class', 'btn btn-dark w-50');
-            document.getElementById('linha2').appendChild(button17);
+            button17.setAttribute('onclick', "AddDisplay('0')");
+            button17.setAttribute('class', 'btn btn-secondary rounded-pill py-4 ms-5 btn-lg');
+            button17.setAttribute('style', 'width:250px;');
+            document.getElementById('linha6').appendChild(button17);
             document.getElementById('0').innerHTML = "0";
             var button18 = document.createElement('button');
-            button18.setAttribute('id', ',');
-            button18.setAttribute('onclick', MudaSinal);
-            button18.setAttribute('class', 'btn btn-dark w-25');
-            document.getElementById('linha2').appendChild(button18);
-            document.getElementById(',').innerHTML = ",";
+            button18.setAttribute('id', '.');
+            button18.setAttribute('onclick', "AddDisplay('.')");
+            button18.setAttribute('class', 'btn btn-secondary rounded-circle py-4 ms-5 btn-lg');
+            button18.setAttribute('style', 'width:100px;');
+            document.getElementById('linha6').appendChild(button18);
+            document.getElementById('.').innerHTML = ".";
             var button19 = document.createElement('button');
             button19.setAttribute('id', '=');
-            button19.setAttribute('onclick', Porcentagem);
-            button19.setAttribute('class', 'btn btn-warning w-25');
-            document.getElementById('linha2').appendChild(button19);
+            button19.setAttribute('onclick', 'Calcular()');
+            button19.setAttribute('class', 'btn btn-warning rounded-circle py-4 ms-5 btn-lg');
+            button19.setAttribute('style', 'width:100px;');
+            document.getElementById('linha6').appendChild(button19);
             document.getElementById('=').innerHTML = "=";
             
 
         }
 
-        function AddDisplay() {}
-
-        function LimpaDisplay() {}
-
-        function MudaSinal() {}
-
-        function Porcentagem() {}
+        
 
     </script>
 
 </head>
 <body>
-    <div id="principal" class="container">
+    <div id="principal" class="container-fluid">
     </div>
 
     <a href="index.html">Voltar</a>
