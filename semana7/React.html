@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionando React à minha página</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="root1"></div>
+    <script type="text/babel">
+        // Sintaxe JSX (não é uma string javascript nem uma marcação HTML)
+        const elemento = <h1>Olá Mundo</h1>
 
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(elemento);
+    </script>
+    <script type="text/babel">
+        function Elemento(){
+            return (
+            <>    
+            <h1>Olá Mundão</h1>
+            <h1>Olá Fatec</h1>
+            </>
+            );
+        }
+        
+        ReactDOM.render(<Elemento />, document.getElementById('root1'));
+    </script>
+
+</body>
+</html>
