@@ -10,16 +10,19 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
         const frase = "Venha estudar na Fatec";
-        var length = 2;
+        let length = 1;
         function preencherLetreiro() {
-            const container = document.getElementById('root');
-            const root = ReactDOM.createRoot('container');
-            root.render(frase.substring(0,length));
-            let length = length + 1;
+            let pedaco_frase = frase.substr(0,length);
+            root.render(<div>{pedaco_frase}</div>);
+            length = length + 1;
+            if (length > frase.length)
+                clearInterval(meu_intervalo);
         }
 
-        setInterval(preencherLetreiro, 1000);
+        var meu_intervalo = setInterval(preencherLetreiro, 1000);
     </script>
 </body>
 </html>
