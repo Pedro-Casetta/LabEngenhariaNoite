@@ -1,6 +1,5 @@
 import './Relogio.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+
 
 function ContaHora(){
     let objeto_data_tempo_real = new Date();
@@ -11,12 +10,4 @@ function ContaHora(){
     return <h1>{tempo_atual}</h1>
 }
 
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-
-function Compasso() {
-    root.render(<ContaHora />)
-}
-setInterval(Compasso, 1000);
-
-export default Compasso;
+export default ContaHora;
